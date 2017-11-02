@@ -44,7 +44,6 @@ export default class DateSelect extends Component {
           <MenuItem value={'thisMonth'} primaryText="This month" />
           <MenuItem value={'thisQuarter'} primaryText="This quarter" />
           <MenuItem value={'ytd'} primaryText="Year to date" />
-          <MenuItem value={'custom'} primaryText="Custom" />
         </SelectField>
 
         <p className={`dateselect-labels ${disableDateLabel}`}>From</p>
