@@ -6,15 +6,15 @@ import moment from 'moment'
 import numbro from 'numbro'
 
 export default class Transactions extends Component {
-
   static propTypes = {
     transactions: PropTypes.object.isRequired,
   }
 
   render() {
     const { transactions } = this.props
+
     return (
-      <Table selectable={false} multiSelectable={false}>
+      <Table multiSelectable={false}>
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <TableRow>
             <TableHeaderColumn>ID</TableHeaderColumn>

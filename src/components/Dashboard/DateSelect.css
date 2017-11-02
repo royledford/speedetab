@@ -1,3 +1,14 @@
 .dateselect-disable {
   color: rgba(0, 0, 0, 0.3);
 }
+
+.dateselect-wrap {
+  display: flex;
+  align-items: center;
+  margin: 0 40px 0 40px;
+}
+
+.dateselect-labels {
+  position: relative;
+  margin: 20px 6px 0 40px;
+}

@@ -1,5 +1,6 @@
 // import delay from './delay'
 import {transactionData} from './transactions'
+
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
@@ -7,6 +8,8 @@ import {transactionData} from './transactions'
 
 class TransactionApi {
   static getVenueTransactions(venueId) {
+    // code below is to filter out venues, but I didn't implement for this.
+    // --------------------
     // const filtered = transactionData.filter(transaction => transaction.venueId === venueId)
     // if (filtered.length > 0) {
     //   return filtered[0]
@@ -17,9 +20,12 @@ class TransactionApi {
   }
 
   static getVenueTransactionsByDate(venueId, fromDate, toDate) {
+
     let venueTransactions = this.getVenueTransactions(venueId)
+
     // clone the object so we aren't working with a reference.
     venueTransactions = Object.assign({}, venueTransactions)
+
     const from = Date.parse(fromDate)
     const to = Date.parse(toDate)
 
@@ -52,15 +58,5 @@ class TransactionApi {
     return venueTransactions
   }
 }
-
-// class TransactionApi {
-//   static getClientTransactions(venueId) {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         resolve(transactions.filter(transaction => transaction.venueId === venueId))
-//       }, delay)
-//     })
-//   }
-// }
 
 export default TransactionApi

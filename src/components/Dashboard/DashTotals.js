@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import NumberBadge from './NumberBadge'
 import numbro from 'numbro'
 import SalesChart from '../SalesChart/SalesChart'
-
 import './DashTotals.css'
 
 export default class DashTotals extends Component {
@@ -12,6 +11,7 @@ export default class DashTotals extends Component {
     totalOrders: PropTypes.number.isRequired,
     totalTax: PropTypes.number.isRequired,
   }
+
   static defaultProps = {
     totalSales: 0,
     totalOrders: 0,
@@ -19,20 +19,14 @@ export default class DashTotals extends Component {
   }
 
   render() {
-    const {totalSales, totalTax, totalOrders} = this.props
+    const { totalSales, totalTax, totalOrders } = this.props
 
     const sales = numbro(totalSales).format('$2a')
     const tax = numbro(totalTax).format('$0a')
     const orders = numbro(totalOrders).format('2a')
     return (
       <div className="dashtotals-numbers">
-        {/* <div
-          style={{ position: 'relative', width: 300, height: 200, margin: '0 0 40px 40px', backgroundColor: '#666' }}
-        >
-          Chart
-        </div> */}
         <SalesChart />
-
         <NumberBadge text={sales} label="Sales" />
         <NumberBadge text={tax} label="Tax" />
         <NumberBadge text={orders} label="Orders" />

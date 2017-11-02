@@ -7,8 +7,7 @@ import FlatButton from 'material-ui/FlatButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import Mood from 'material-ui/svg-icons/social/mood'
 import Avatar from 'material-ui/Avatar'
-import { grey700, darkBlack} from 'material-ui/styles/colors'
-import './Header.css'
+import { grey700, darkBlack } from 'material-ui/styles/colors'
 
 export default class Header extends Component {
   constructor(props) {
@@ -19,21 +18,20 @@ export default class Header extends Component {
   }
 
   handleLogged = () => {
+    // Just faking logging in and out. This would eventually
+    // handle showing the login page.
     this.setState({ logged: !this.state.logged })
   }
 
   render() {
+    const { logged } = this.state
     return (
       <div className="header">
         <AppBar
-          style={{backgroundColor: darkBlack}}
+          style={{ backgroundColor: darkBlack }}
           title="Taco Group Co."
           iconElementRight={
-            this.state.logged ? (
-              <Logged handleLogging={this.handleLogged} />
-            ) : (
-              <Login handleLogging={this.handleLogged} />
-            )
+            logged ? <Logged handleLogging={this.handleLogged} /> : <Login handleLogging={this.handleLogged} />
           }
           iconElementLeft={<Avatar icon={<Mood />} backgroundColor={grey700} />}
         />
@@ -46,13 +44,7 @@ class Login extends Component {
   static muiName = 'FlatButton'
 
   render() {
-    return (
-      <FlatButton
-        {...this.props}
-        label="Login"
-        onClick={this.props.handleLogging}
-      />
-    )
+    return <FlatButton {...this.props} label="Login" onClick={this.props.handleLogging} />
   }
 }
 

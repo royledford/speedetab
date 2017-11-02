@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Dashboard.css'
 import Header from '../Header/Header'
 import DateSelect from './DateSelect'
 import DashTotals from './DashTotals'
@@ -33,20 +32,16 @@ export default class Dashboard extends Component {
       fromDate: fromDate,
       toDate: toDate,
       venues: Venues.getClientVenues(1),
-      // transactions: Transactions.getVenueTransactions(1),
       transactions: Transactions.getVenueTransactionsByDate(1, fromDate, toDate),
     })
   }
 
-  componentDidMount = () => {
-    // debugger
-  }
-
+  // Set the date pickers to the dates in the range
+  // selected in the dropdown
   handleDateRangeChange = value => {
-    this.setState({ dateRange: value })
-
     let to = {}
     let from = {}
+
     switch (value) {
       case 'thisWeek':
         from = moment()
@@ -96,25 +91,29 @@ export default class Dashboard extends Component {
           .toDate()
         to = moment().toDate()
     }
+
     this.setState({
       fromDate: from,
       toDate: to,
+      dateRange: value,
     })
+
     if (value === 'custom') {
       this.setState({ disableDates: false })
     } else {
       this.setState({ disableDates: true })
     }
+
     this.updateTransactions(from, to)
   }
 
-  handleFromDateChange = (date) => {
-    this.setState({fromDate: date})
+  handleFromDateChange = date => {
+    this.setState({ fromDate: date })
     this.updateTransactions(date, this.state.toDate)
   }
 
-  handleToDateChange = (date) => {
-    this.setState({toDate: date})
+  handleToDateChange = date => {
+    this.setState({ toDate: date })
     this.updateTransactions(this.state.fromDate, date)
   }
 
@@ -130,7 +129,8 @@ export default class Dashboard extends Component {
     return (
       <div>
         <Header />
-        <div className="dashboard-dates">
+
+        <div>
           <DateSelect
             range={dateRange}
             onRangeChange={this.handleDateRangeChange}
@@ -141,11 +141,13 @@ export default class Dashboard extends Component {
             toDateChange={this.handleToDateChange}
           />
         </div>
+
         <DashTotals
           totalSales={transactions.totalAmount}
           totalTax={transactions.taxAmount}
           totalOrders={transactions.totalTransactions}
         />
+
         <DashTabs venues={venues} transactions={transactions} />
       </div>
     )
