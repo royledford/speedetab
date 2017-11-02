@@ -41,7 +41,7 @@ export default class Transactions extends Component {
     const { transactions } = this.props
     const { date, customer, sale, tax, total } = this.state
 
-    const actions = [<FlatButton label="Cancel" primary={true} keyboardFocused={true} onClick={this.handleClose} />]
+    const actions = [<FlatButton label="Cancel" primary={true} keyboardFocused={false} onClick={this.handleClose} />]
 
     return (
       <div>

@@ -14,7 +14,6 @@ export default class Dashboard extends Component {
       dateRange: 'thisWeek',
       fromDate: {},
       toDate: {},
-      disableDates: true,
       client: {},
       venues: [],
       transactions: {},
@@ -98,12 +97,6 @@ export default class Dashboard extends Component {
       dateRange: value,
     })
 
-    if (value === 'custom') {
-      this.setState({ disableDates: false })
-    } else {
-      this.setState({ disableDates: true })
-    }
-
     this.updateTransactions(from, to)
   }
 
@@ -136,7 +129,6 @@ export default class Dashboard extends Component {
             onRangeChange={this.handleDateRangeChange}
             fromDate={fromDate}
             toDate={toDate}
-            disableDates={disableDates}
             fromDateChange={this.handleFromDateChange}
             toDateChange={this.handleToDateChange}
           />
