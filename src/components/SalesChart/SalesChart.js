@@ -8,15 +8,15 @@ export default class SalesChart extends Component {
   }
 
   render() {
-  
+
     return (
       <div className="saleschart">
-        <AreaChart
+        {/* <AreaChart
           data={[
             [{ x: 1, y: 20 }, { x: 2, y: 10 }, { x: 3, y: 25 }],
             [{ x: 1, y: 10 }, { x: 2, y: 12 }, { x: 3, y: 4 }],
           ]}
-        />
+        /> */}
       </div>
     )
   }
