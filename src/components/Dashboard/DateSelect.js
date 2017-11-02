@@ -12,26 +12,24 @@ export default class DateSelect extends Component {
     toDate: PropTypes.object.isRequired,
     datesEnabled: PropTypes.bool,
   }
+
   static defaultProps = {
     someProp: 'someValue',
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      someState: true,
-    }
   }
 
   handleFromChange = (event, date) => {
     this.props.fromDateChange(date)
   }
+
   handleToChange = (event, date) => {
     this.props.toDateChange(date)
   }
+
   render() {
     const { range, disableDates, toDate, fromDate, onRangeChange } = this.props
-    const disableDateLabel = (disableDates) ? 'dateselect-disable' : ''
+
+    // Add a class when dates should be disabled (dropdown != 'custom')
+    const disableDateLabel = disableDates ? 'dateselect-disable' : ''
 
     return (
       <div className="dateselect-wrap">
@@ -48,6 +46,7 @@ export default class DateSelect extends Component {
           <MenuItem value={'ytd'} primaryText="Year to date" />
           <MenuItem value={'custom'} primaryText="Custom" />
         </SelectField>
+
         <p className={`dateselect-labels ${disableDateLabel}`}>From</p>
         <DatePicker
           id="datepaicker-from"
@@ -57,6 +56,7 @@ export default class DateSelect extends Component {
           style={{ display: 'inline-block', margin: '21px 0 0 20px' }}
           onChange={this.handleFromChange}
         />
+
         <p className={`dateselect-labels ${disableDateLabel}`}>To</p>
         <DatePicker
           id="datepaicker-to"
