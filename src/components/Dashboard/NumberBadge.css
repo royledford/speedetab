@@ -1,0 +1,22 @@
+.numberbadge-wrap {
+  position: relative;
+  margin: 0 25px 0 0;
+}
+
+.numberbadge-num {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  font-size: 45px;
+  background-color: #444;
+  color: white;
+}
+
+.numberbadge-label {
+  font-size: 20px;
+  margin: 6px 0 0 0;
+  text-align: center;
+}
